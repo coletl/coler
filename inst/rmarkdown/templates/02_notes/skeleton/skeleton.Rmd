@@ -1,0 +1,25 @@
+---
+title: ""
+author: "Cole Tanigawa-Lau"
+date: ""
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+  # html_notebook:
+  #   toc: yes
+  #   toc_depth: 2
+  #   toc_float: yes
+  theme: flatly
+fontfamily: palatino
+fontsize: 12pt
+geometry: margin=1in
+header-includes:
+  - \usepackage{setspace}
+  - \onehalfspacing
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+

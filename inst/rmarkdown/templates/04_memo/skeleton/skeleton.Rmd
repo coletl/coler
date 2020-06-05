@@ -1,0 +1,22 @@
+---
+title: "Memo"
+author: "Cole Tanigawa-Lau"
+date: ""
+output:
+  pdf_document:
+    toc: no
+    toc_depth: '2'
+  theme: flatly
+fontfamily: palatino
+indent: true
+fontsize: 12pt
+geometry: margin=1in
+header-includes:
+  - \usepackage{setspace}
+  - \onehalfspacing
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, include = FALSE)
+```
+

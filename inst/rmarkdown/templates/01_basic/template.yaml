@@ -1,0 +1,3 @@
+name: Basic
+description: Basic template for a document with chunk output printed to the console.
+create_dir: false
