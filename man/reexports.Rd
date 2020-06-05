@@ -6,9 +6,12 @@
 \alias{map}
 \alias{map_at}
 \alias{str_extract}
+\alias{str_split}
+\alias{str_split_fixed}
 \alias{skim}
 \alias{tabyl}
 \alias{tidy}
+\alias{\%>\%}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -20,10 +23,12 @@ below to see their documentation.
 
   \item{janitor}{\code{\link[janitor]{tabyl}}}
 
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+
   \item{purrr}{\code{\link[purrr]{map}}, \code{\link[purrr]{map_at}}}
 
   \item{skimr}{\code{\link[skimr]{skim}}}
 
-  \item{stringr}{\code{\link[stringr]{str_extract}}}
+  \item{stringr}{\code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_split_fixed}}}
 }}
 

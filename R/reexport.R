@@ -14,6 +14,14 @@ purrr::map_at
 #' @export
 stringr::str_extract
 
+#' @importFrom stringr str_split
+#' @export
+stringr::str_split
+
+#' @importFrom stringr str_split_fixed
+#' @export
+stringr::str_split_fixed
+
 #' @importFrom skimr skim
 #' @export
 skimr::skim
@@ -26,3 +34,7 @@ janitor::tabyl
 #' @importFrom broom tidy
 #' @export
 broom::tidy
+
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
