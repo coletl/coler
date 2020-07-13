@@ -9,14 +9,17 @@ output:
     toc: yes
     toc_depth: 3
     toc_float: yes
-  theme: paper
+    theme: paper
 editor_options:
   chunk_output_type: inline
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.width = 7, fig.height = 5)
-knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+proj_dir <- tryCatch(rprojroot::find_root(".Rproj"),
+                     error = function(e) rprojroot::find_root(".gitignore"))
+
+knitr::opts_knit$set(root.dir = proj_dir)
 ```
 
 ```{r about, echo=FALSE, results = "asis"}
