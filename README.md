@@ -17,5 +17,5 @@ devtools::install_github("coletl/coler", depend = FALSE)
 To remove the RMarkdown templates from your computer, you can run
 
 ```r
-unlink(file.path(find.package("easyr"), "rmarkdown"), recursive = TRUE)
+unlink(file.path(find.package("coler"), "rmarkdown"), recursive = TRUE)
 ```
