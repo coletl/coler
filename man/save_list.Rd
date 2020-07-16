@@ -4,8 +4,8 @@
 \alias{save_list}
 \title{Write list elements to disk as separate objects}
 \usage{
-save_list(x, dir, ext = c(".rds", ".csv", ".pdf"), names = NULL,
-  cores = 1, ...)
+save_list(x, dir, ext = c(".fst", ".qs", ".rds", ".csv", ".pdf"),
+  names = NULL, cores = 1, compress = 100, ...)
 }
 \arguments{
 \item{x}{a list of objects to save.}
@@ -16,9 +16,13 @@ save_list(x, dir, ext = c(".rds", ".csv", ".pdf"), names = NULL,
 
 \item{names}{a vector of file names without extensions. Defaults to the names of \code{x}.}
 
-\item{cores}{number of cores to use in \code{\link{mcparallel}}. The default (1) runs in series.}
+\item{cores}{number of cores to use in \code{\link{mcparallel}}. The default (1) runs in series. Note that several file-writing functions already implement multi-threading.}
 
-\item{...}{further arguments to pass to the file-writing function: \code{\link{saveRDS}}, \code{\link[data.table]{fwrite}}, or \code{\link[ggplot2]{ggsave}}.}
+\item{...}{further arguments to pass to the file-writing function:
+\code{\link{saveRDS}},
+\code{\link[fst]{write_fst}}, \code{\link[qs]{qsave}},
+\code{\link[data.table]{fwrite}},
+or \code{\link[ggplot2]{ggsave}}.}
 }
 \description{
 Write list elements to disk as separate objects

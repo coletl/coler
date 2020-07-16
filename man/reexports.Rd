@@ -3,6 +3,9 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{safely}
+\alias{object_size}
+\alias{compare}
 \alias{map}
 \alias{map_at}
 \alias{str_extract}
@@ -25,10 +28,14 @@ below to see their documentation.
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
 
-  \item{purrr}{\code{\link[purrr]{map}}, \code{\link[purrr]{map_at}}}
+  \item{pryr}{\code{\link[pryr]{object_size}}}
+
+  \item{purrr}{\code{\link[purrr]{safely}}, \code{\link[purrr]{map}}, \code{\link[purrr]{map_at}}}
 
   \item{skimr}{\code{\link[skimr]{skim}}}
 
   \item{stringr}{\code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_split_fixed}}}
+
+  \item{waldo}{\code{\link[waldo]{compare}}}
 }}
 

@@ -4,7 +4,8 @@
 \alias{detect_duped}
 \title{Test for duplicates}
 \usage{
-detect_duped(..., sep = "-^-", incomparables = FALSE)
+detect_duped(..., sep = "-^-", incomparables = FALSE, named = FALSE,
+  message = FALSE)
 }
 \arguments{
 \item{...}{vectors to concatenate.}
@@ -12,9 +13,11 @@ detect_duped(..., sep = "-^-", incomparables = FALSE)
 \item{sep}{a string used to when concatenating the vectors. See \code{\link[base]{interaction}}.}
 
 \item{incomparables}{FALSE or a vector of incomparable---i.e., never-duplicate---values. See \code{\link[base]{duplicated}}.}
+
+\item{named}{when TRUE, the output is named with the}
 }
 \value{
-A logical vector corresponding to values that are duplicates \emph{or are duplicated}.
+A logical vector of the same length as input vectors. TRUE values mark elements that are duplicates \emph{or are duplicated}.
 }
 \description{
 Test for duplicates in one or a combination of vectors.
