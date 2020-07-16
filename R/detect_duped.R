@@ -15,8 +15,9 @@
 #' @param ... vectors to concatenate.
 #' @param sep a string used to when concatenating the vectors. See \code{\link[base]{interaction}}.
 #' @param incomparables FALSE or a vector of incomparable---i.e., never-duplicate---values. See \code{\link[base]{duplicated}}.
+#' @param named when TRUE, the output is named with the
 #'
-#' @return A logical vector corresponding to values that are duplicates \emph{or are duplicated}.
+#' @return A logical vector of the same length as input vectors. TRUE values mark elements that are duplicates \emph{or are duplicated}.
 #'
 #' @seealso \code{\link[base]{duplicated}} and \code{\link[base]{interaction}}.
 #'
@@ -32,24 +33,25 @@
 
 
 detect_duped <-
-  function(..., sep = "-^-", incomparables = FALSE) {
+  function(..., sep = "-^-", incomparables = FALSE,
+           named = FALSE, message = FALSE) {
+
     if(length(list(...)) > 1) combs <- paste(..., sep = sep)
     else combs <- as.vector(...)
 
-    dups <- unique(combs[duplicated(combs)])
+    dups <- unique(combs[duplicated(combs, incomparables = incomparables)])
 
-    out <- combs %in% dups
+    if(require(fastmatch)) out <- combs %fin% dups
+    else                   out <- combs %in% dups
 
-    message(
+
+    if(message) message(
       sprintf("%d instances of %d duplicated elements",
               sum(out), length(dups)
       )
     )
 
-    if(!na_dupe) {
-      na_ind <- which(is.na(combs))
-      out[na_ind] <- NA
-    }
+    if(named) names(out) <- combs
 
     return(out)
   }
