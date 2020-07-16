@@ -1,5 +1,18 @@
 # Functions to import from other packages
 
+# Programming ----
+#' @importFrom purrr safely
+#' @export
+purrr::safely
+
+#' @importFrom pryr object_size
+#' @export
+pryr::object_size
+
+#' @importFrom waldo compare
+#' @export
+waldo::compare
+
 # Mapping ----
 #' @importFrom purrr map
 #' @export
@@ -22,11 +35,11 @@ stringr::str_split
 #' @export
 stringr::str_split_fixed
 
+# Other ----
 #' @importFrom skimr skim
 #' @export
 skimr::skim
 
-# Other ----
 #' @importFrom janitor tabyl
 #' @export
 janitor::tabyl
