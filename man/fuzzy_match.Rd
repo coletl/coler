@@ -2,53 +2,60 @@
 % Please edit documentation in R/fuzzy_match.R
 \name{fuzzy_match}
 \alias{fuzzy_match}
+\alias{fuzzy_check}
 \title{Link data.tables by fuzzy string matching}
 \usage{
-fuzzy_match(a, b, acol, bcol, method = "jw", ...)
+fuzzy_match(a, b, method = "jw", cutoff = 0.5, ...)
+
+fuzzy_check(a, b, method = "jw", ...)
 }
 \arguments{
-\item{a}{a source data.table}
+\item{a}{a source vector of strings}
 
-\item{b}{a target data.table}
-
-\item{acol}{column name in \code{a} to use for matching}
-
-\item{bcol}{column name in \code{b} to use for matching}
+\item{b}{a target vector}
 
 \item{method}{method for \code{\link[stringdist]{stringdistmatrix}}}
+
+\item{cutoff}{numeric indicating the maximum distance threshold for a match (\code{fuzzy_match} only).
+String distances equal to or below the cutoff are counted as matches.}
+
+\item{...}{further arguments for \code{\link[stringdist]{stringdistmatrix}}}
 }
 \value{
-a data.table containing any blocking columns,
-the source column,
-the closest match in the target column,
-and the string distance for that match.
+For \code{fuzzy_match}, a vector of nearest string matches.
+For strings with multiple closest matches, only the first is returned.
+
+For \code{fuzzy_check}, a data.frame containing the source strings,
+their closest matches, and the string distance for each match.
 }
 \description{
-Finds the closest string match between two data.tables.
+Finds the closest string match.
 The default method computes Jaro-Winkler string distances using the \code{stringdist} package.
-In cases with multiple closest matches, only the first match is reported.
+For strings with multiple closest matches, only the first is reported.
 }
 \examples{
 library(data.table)
 
 set.seed(575)
+fruit <- sample(stringr::fruit, 30)
+
 DTA <- data.table(block1 = sample(LETTERS[1:4], 20, TRUE),
                   block2 = sample(LETTERS[1:4], 20, TRUE),
-                  fruit   = sample(stringr::fruit[1:12], 20, TRUE))
+                  fruit   = sample(fruit, 20))
 
 DTB <- data.table(block1 = sample(LETTERS[1:4], 20, TRUE),
                   block2 = sample(LETTERS[1:4], 20, TRUE),
-                  fruit   = sample(stringr::fruit[1:12], 20, TRUE))
+                  fruit   = sample(fruit, 20))
 
-fuzzy_match(DTA, DTB, "fruit", "fruit")
+fuzzy_check(DTA$fruit, DTB$fruit)
+fuzzy_match(DTA$fruit, DTB$fruit)
 
-setkey(DTA, block1, block2)
 setkey(DTB, block1, block2)
 
-DTA[ , fuzzy_match(.SD, b = DTB[.BY], "fruit", "fruit"),
-       by = .(block1, block2)]
+DTA[ , fuzzy_match(fruit, b = DTB[.BY, fruit]),
+     by = .(block1, block2)]
 
 }
 \seealso{
-\link[stringdist]{stringdistmatrix}
+\code{\link[stringdist]{stringdistmatrix}}
 }

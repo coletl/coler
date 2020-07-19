@@ -1,58 +1,76 @@
 #' Link data.tables by fuzzy string matching
 #'
-#' @description Finds the closest string match between two data.tables.
-#' The default method computes Jaro-Winkler string distances using the \code{stringdist} package.
-#' In cases with multiple closest matches, only the first match is reported.
-#' @param a a source data.table
-#' @param b a target data.table
-#' @param acol column name in \code{a} to use for matching
-#' @param bcol column name in \code{b} to use for matching
-#' @param method method for \code{\link[stringdist]{stringdistmatrix}}
+#' @name fuzzy_match
+#' @aliases fuzzy_check
 #'
-#' @return a data.table containing any blocking columns,
-#' the source column,
-#' the closest match in the target column,
-#' and the string distance for that match.
+#' @description Finds the closest string match.
+#' The default method computes Jaro-Winkler string distances using the \code{stringdist} package.
+#' For strings with multiple closest matches, only the first is reported.
+#' @param a a source vector of strings
+#' @param b a target vector
+#' @param method method for \code{\link[stringdist]{stringdistmatrix}}
+#' @param cutoff numeric indicating the maximum distance threshold for a match (\code{fuzzy_match} only).
+#' String distances equal to or below the cutoff are counted as matches.
+#' @param ... further arguments for \code{\link[stringdist]{stringdistmatrix}}
+#'
+#' @return For \code{fuzzy_match}, a vector of nearest string matches.
+#' For strings with multiple closest matches, only the first is returned.
 #'
 #' @seealso
-#' \link[stringdist]{stringdistmatrix}
+#' \code{\link[stringdist]{stringdistmatrix}}
 #'
 #' @examples
 #' library(data.table)
 #'
 #' set.seed(575)
+#' fruit <- sample(stringr::fruit, 30)
+#'
 #' DTA <- data.table(block1 = sample(LETTERS[1:4], 20, TRUE),
 #'                   block2 = sample(LETTERS[1:4], 20, TRUE),
-#'                   fruit   = sample(stringr::fruit[1:12], 20, TRUE))
+#'                   fruit   = sample(fruit, 20))
 #'
 #' DTB <- data.table(block1 = sample(LETTERS[1:4], 20, TRUE),
 #'                   block2 = sample(LETTERS[1:4], 20, TRUE),
-#'                   fruit   = sample(stringr::fruit[1:12], 20, TRUE))
+#'                   fruit   = sample(fruit, 20))
 #'
-#' fuzzy_match(DTA, DTB, "fruit", "fruit")
+#' fuzzy_check(DTA$fruit, DTB$fruit)
+#' fuzzy_match(DTA$fruit, DTB$fruit)
 #'
-#' setkey(DTA, block1, block2)
 #' setkey(DTB, block1, block2)
 #'
-#' DTA[ , fuzzy_match(.SD, b = DTB[.BY], "fruit", "fruit"),
-#'        by = .(block1, block2)]
+#' DTA[ , fuzzy_match(fruit, b = DTB[.BY, fruit]),
+#'      by = .(block1, block2)]
 #'
 #' @export
 
-fuzzy_match <-
-  function(a, b, acol, bcol, method = "jw", ...) {
-    # Unblocked distance computations
-    sdmat <- stringdist::stringdistmatrix(a[[acol]], b[[bcol]], useNames = TRUE,
-                                          method = method, ...)
-    min_dist <- matrixStats::rowMins(sdmat)
+fuzzy_match <- function(a, b, method = "jw", cutoff = 0.5, ...) {
 
-    best_match <- character()
-    for(ii in 1:length(min_dist)) best_match[ii] <- first(colnames(sdmat)[sdmat[ii, ] == min_dist[ii]])
+  distmat <- stringdist::stringdistmatrix(a, b, useNames = TRUE, method = method, ...)
+  simmat <- 1 - distmat
 
-    sdm <-
-      setNames(
-        data.table(rownames(sdmat), best_match, min_dist),
-        c(acol, "best_match", "min_strdist")
-      )
-    return(sdm)
-  }
+  best_match <- colnames(simmat)[max.col(simmat)]
+  min_dist   <- matrixStats::rowMins(distmat)
+
+  out <- ifelse(min_dist <= cutoff, best_match, NA)
+
+  return(out)
+}
+
+
+#' @rdname fuzzy_match
+#' @return For \code{fuzzy_check}, a data.frame containing the source strings,
+#' their closest matches, and the string distance for each match.
+#' @export
+
+fuzzy_check <- function(a, b, method = "jw", ...) {
+
+  distmat <- stringdist::stringdistmatrix(a, b, useNames = TRUE, method = method, ...)
+  simmat <- 1 - distmat
+
+  best_match <- colnames(simmat)[max.col(simmat)]
+  min_dist   <- matrixStats::rowMins(distmat)
+
+  out <- data.frame(source = rownames(distmat), best_match, min_dist)
+
+  return(out)
+}
