@@ -51,7 +51,7 @@ fuzzy_match <- function(a, b, method = "jw", cutoff = 0.5, ...) {
   best_match <- colnames(simmat)[max.col(simmat)]
   min_dist   <- matrixStats::rowMins(distmat)
 
-  out <- ifelse(min_dist <= cutoff, best_match, NA)
+  out <- ifelse(min_dist <= cutoff, best_match, NA_character_)
 
   return(out)
 }
