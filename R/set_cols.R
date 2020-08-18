@@ -12,6 +12,11 @@
 #' @param j column names or integer indices indicating columns to update.
 #' The default updates all columns.
 #'
+#' @examples
+#' df <- data.frame(a = letters, b = LETTERS, c = LETTERS,
+#'                  stringsAsFactors = FALSE)
+#' set_cols(df, FUN = tolower)
+#'
 #' @seealso \code{\link[data.table]{:=}}.
 #' @export
 
@@ -23,7 +28,3 @@ set_cols <-
     for(col in j) data.table::set(x, i, j = col,
                                   value = FUN(x[[col]]))
   }
-
-df <- data.frame(a = letters, b = LETTERS, c = LETTERS,
-                 stringsAsFactors = FALSE)
-set_cols(df, FUN = tolower)

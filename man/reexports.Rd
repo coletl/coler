@@ -7,7 +7,6 @@
 \alias{object_size}
 \alias{compare}
 \alias{map}
-\alias{map_at}
 \alias{str_extract}
 \alias{str_split}
 \alias{str_split_fixed}
@@ -30,7 +29,7 @@ below to see their documentation.
 
   \item{pryr}{\code{\link[pryr]{object_size}}}
 
-  \item{purrr}{\code{\link[purrr]{safely}}, \code{\link[purrr]{map}}, \code{\link[purrr]{map_at}}}
+  \item{purrr}{\code{\link[purrr]{safely}}, \code{\link[purrr]{map}}}
 
   \item{skimr}{\code{\link[skimr]{skim}}}
 

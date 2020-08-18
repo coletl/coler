@@ -13,26 +13,17 @@ pryr::object_size
 #' @export
 waldo::compare
 
-# Mapping ----
-#' @importFrom purrr map
+#' @importFrom purrr map map_at
 #' @export
 purrr::map
-
-#' @importFrom purrr map_at
-#' @export
 purrr::map_at
 
 # Strings ----
-#' @importFrom stringr str_extract
+#' @importFrom stringr str_extract str_split str_split_fixed
+#' @export
 #' @export
 stringr::str_extract
-
-#' @importFrom stringr str_split
-#' @export
 stringr::str_split
-
-#' @importFrom stringr str_split_fixed
-#' @export
 stringr::str_split_fixed
 
 # Other ----
