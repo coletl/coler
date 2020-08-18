@@ -21,6 +21,12 @@ A convenience function implementing \code{\link[data.table]{set}}
 looped over columns of a \code{data.frame}.
 Modification is fast (by reference) but cannot include grouping operations.
 }
+\examples{
+df <- data.frame(a = letters, b = LETTERS, c = LETTERS,
+                 stringsAsFactors = FALSE)
+set_cols(df, FUN = tolower)
+
+}
 \seealso{
 \code{\link[data.table]{:=}}.
 }

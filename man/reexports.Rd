@@ -8,8 +8,6 @@
 \alias{compare}
 \alias{map}
 \alias{str_extract}
-\alias{str_split}
-\alias{str_split_fixed}
 \alias{skim}
 \alias{tabyl}
 \alias{tidy}
@@ -33,7 +31,7 @@ below to see their documentation.
 
   \item{skimr}{\code{\link[skimr]{skim}}}
 
-  \item{stringr}{\code{\link[stringr]{str_extract}}, \code{\link[stringr]{str_split}}, \code{\link[stringr]{str_split_fixed}}}
+  \item{stringr}{\code{\link[stringr]{str_extract}}}
 
   \item{waldo}{\code{\link[waldo]{compare}}}
 }}
