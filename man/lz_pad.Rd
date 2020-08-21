@@ -15,7 +15,7 @@ lz_pad(string, width)
 A character vector.
 }
 \description{
-This just calls \code{\link[stirngr]{str_pad}} to
+This just calls \code{\link[stringr]{str_pad}} to
 pad each element of a character vector with zeros on the left side.
 This is helpful when standardizing the length of numeric ID variables.
 }

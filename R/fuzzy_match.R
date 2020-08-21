@@ -38,7 +38,10 @@
 #'
 #' setkey(DTB, block1, block2)
 #'
-#' DTA[ , fuzzy_match(fruit, b = DTB[.BY, fruit]),
+#' DTA[ , fuzzy_check(fruit, b = DTB[.BY, fruit]),
+#'      by = .(block1, block2)]
+#' DTA[ , .(fruit,
+#'          B_fruit = fuzzy_match(fruit, b = DTB[.BY, fruit])),
 #'      by = .(block1, block2)]
 #'
 #' @export
@@ -51,7 +54,8 @@ fuzzy_match <- function(a, b, method = "jw", cutoff = 0.5, ...) {
   best_match <- colnames(simmat)[max.col(simmat)]
   min_dist   <- matrixStats::rowMins(distmat)
 
-  out <- ifelse(min_dist <= cutoff, best_match, NA_character_)
+  # Guarantee character-type output
+  out <- dplyr::if_else(min_dist <= cutoff, best_match, NA_character_)
 
   return(out)
 }

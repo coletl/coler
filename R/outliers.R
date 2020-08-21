@@ -7,7 +7,7 @@
 #'
 #' @param x a numeric vector.
 #' @param df a \code{data.frame}.
-#' @param probs for \code{detect_outliers()}, a length-2 numeric vector of probabilities. For \code{rm_outliers()}, the same or a list of such vectors. See \code{\link[base]{quantile}}.
+#' @param probs for \code{detect_outliers()}, a length-2 numeric vector of probabilities. For \code{rm_outliers()}, the same or a list of such vectors. See \code{\link[stats]{quantile}}.
 #' @param na.rm logical, whether to remove \code{NA} values before computing quantiles.
 #' @param incbounds logical, whether boundary values should be interpreted as inclusive. See \code{\link[data.table]{between}}.
 #' @param ... quoted column names in which to search for outliers, or a vector of column names.
@@ -20,7 +20,7 @@
 #' identical(rm_outliers(df, c("num1", "num2")),
 #'           rm_outliers(df, "num1", "num2")
 #'           )
-#' @seealso \code{\link[base]{quantile}} and \code{\link[data.table]{between}}.
+#' @seealso \code{\link[stats]{quantile}} and \code{\link[data.table]{between}}.
 #' @export
 
 #' @rdname outliers
@@ -32,7 +32,7 @@ detect_outliers <- function(x, probs, na.rm = FALSE, incbounds = TRUE) {
 
   na_ind <- which(is.na(x))
 
-  qntl <- quantile(x, probs, na.rm)
+  qntl <- stats::quantile(x, probs, na.rm)
 
   out <- ! data.table::inrange(x, min(qntl), max(qntl), incbounds)
 

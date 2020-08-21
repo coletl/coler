@@ -3,7 +3,7 @@
 \name{prop_na}
 \alias{prop_na}
 \alias{count_na}
-\title{Calculate the proportion of missing values}
+\title{Summarize missing values}
 \usage{
 prop_na(x)
 
@@ -16,5 +16,5 @@ count_na(x)
 A scalar. For \code{prop_na} the proportion of missing  values. For \code{count_na} a count of missing values
 }
 \description{
-
+Return the count or proportion of \code{NA} values.
 }

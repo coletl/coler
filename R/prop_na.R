@@ -1,8 +1,7 @@
 #' @name prop_na
 #'
-#' @title Calculate the proportion of missing values
-#'
-#' @description
+#' @title Summarize missing values
+#' @description Return the count or proportion of \code{NA} values.
 #'
 #' @param x a vector.
 #'

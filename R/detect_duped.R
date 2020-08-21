@@ -41,8 +41,9 @@ detect_duped <-
 
     dups <- unique(combs[duplicated(combs, incomparables = incomparables)])
 
-    if(require(fastmatch)) out <- combs %fin% dups
-    else                   out <- combs %in% dups
+    if(requireNamespace("fastmatch", quietly = TRUE))
+         out <- fastmatch::`%fin%`(combs, dups)
+    else out <- (combs %in% dups)
 
 
     if(message) message(

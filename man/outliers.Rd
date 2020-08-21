@@ -8,13 +8,12 @@
 \usage{
 detect_outliers(x, probs, na.rm = FALSE, incbounds = TRUE)
 
-rm_outliers(df, ..., probs = c(0.025, 0.975), na.rm = FALSE,
-  incbounds = TRUE)
+rm_outliers(df, ..., probs = c(0.025, 0.975), na.rm = FALSE, incbounds = TRUE)
 }
 \arguments{
 \item{x}{a numeric vector.}
 
-\item{probs}{for \code{detect_outliers()}, a length-2 numeric vector of probabilities. For \code{rm_outliers()}, the same or a list of such vectors. See \code{\link[base]{quantile}}.}
+\item{probs}{for \code{detect_outliers()}, a length-2 numeric vector of probabilities. For \code{rm_outliers()}, the same or a list of such vectors. See \code{\link[stats]{quantile}}.}
 
 \item{na.rm}{logical, whether to remove \code{NA} values before computing quantiles.}
 
@@ -37,5 +36,5 @@ identical(rm_outliers(df, c("num1", "num2")),
           )
 }
 \seealso{
-\code{\link[base]{quantile}} and \code{\link[data.table]{between}}.
+\code{\link[stats]{quantile}} and \code{\link[data.table]{between}}.
 }

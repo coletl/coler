@@ -4,9 +4,13 @@
 \alias{order_substr}
 \title{Order substrings of a character vector}
 \usage{
-order_substr(x,
+order_substr(
+  x,
   split = "\\\\s*,\\\\s*|\\\\s*/\\\\s*|\\\\s*-\\\\s*|\\\\s+",
-  perl = TRUE, collapse = " ", reverse = FALSE)
+  perl = TRUE,
+  collapse = " ",
+  reverse = FALSE
+)
 }
 \arguments{
 \item{x}{a character vector.}

@@ -43,7 +43,7 @@ order_substr <-
                    FUN.VALUE = character(1)
     )
     # Trim leading and trailing whitespace
-    tmp3 <- gsub(tmp2, patt = "^\\s|\\s$", rep = "")
+    tmp3 <- gsub(tmp2, pattern = "^\\s|\\s$", replacement = "")
 
     # Add NA values back in
     tmp3[na_ind] <- NA_character_

@@ -4,8 +4,15 @@
 \alias{save_list}
 \title{Write list elements to disk as separate objects}
 \usage{
-save_list(x, dir, ext = c(".fst", ".qs", ".rds", ".csv", ".pdf"),
-  names = NULL, cores = 1, compress = 100, ...)
+save_list(
+  x,
+  dir,
+  ext = c(".fst", ".qs", ".rds", ".csv", ".pdf"),
+  names = NULL,
+  cores = 1,
+  compress = 100,
+  ...
+)
 }
 \arguments{
 \item{x}{a list of objects to save.}

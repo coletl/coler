@@ -52,7 +52,10 @@ fuzzy_match(DTA$fruit, DTB$fruit)
 
 setkey(DTB, block1, block2)
 
-DTA[ , fuzzy_match(fruit, b = DTB[.BY, fruit]),
+DTA[ , fuzzy_check(fruit, b = DTB[.BY, fruit]),
+     by = .(block1, block2)]
+DTA[ , .(fruit,
+         B_fruit = fuzzy_match(fruit, b = DTB[.BY, fruit])),
      by = .(block1, block2)]
 
 }

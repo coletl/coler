@@ -21,8 +21,8 @@
 rm_tmp <- function(pattern = NULL) {
   tmpd <- tempdir()
 
-  tmp_all <- list.files(tmpd, full = TRUE, recursive = TRUE)
-  tmp_match <- list.files(tmpd, full = TRUE, recursive = TRUE,
+  tmp_all <- list.files(tmpd, full.names = TRUE, recursive = TRUE)
+  tmp_match <- list.files(tmpd, full.names = TRUE, recursive = TRUE,
                           pattern = pattern)
   rm_count <- sum(file.remove(tmp_match))
 

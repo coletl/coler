@@ -4,8 +4,14 @@
 \alias{comp_cols}
 \title{Compare similarly named columns}
 \usage{
-comp_cols(x, id_cols = NULL, pattern = "^i\\\\.", col_list = NULL,
-  restrict = FALSE, rm_na = FALSE)
+comp_cols(
+  x,
+  id_cols = NULL,
+  pattern = "^i\\\\.",
+  col_list = NULL,
+  restrict = FALSE,
+  rm_na = FALSE
+)
 }
 \arguments{
 \item{x}{a data.frame.}

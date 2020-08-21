@@ -19,15 +19,15 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{broom}{\code{\link[broom]{tidy}}}
+  \item{broom}{\code{\link[broom:reexports]{tidy}}}
 
   \item{janitor}{\code{\link[janitor]{tabyl}}}
 
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr:pipe]{\%>\%}}}
 
   \item{pryr}{\code{\link[pryr]{object_size}}}
 
-  \item{purrr}{\code{\link[purrr]{safely}}, \code{\link[purrr]{map}}}
+  \item{purrr}{\code{\link[purrr]{map}}, \code{\link[purrr]{safely}}}
 
   \item{skimr}{\code{\link[skimr]{skim}}}
 

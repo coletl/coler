@@ -1,7 +1,7 @@
 Package: coler
 Type: Package
 Title: Convenience functions and personal templates 
-Version: 0.1.0
+Version: 0.2.0
 Author: Cole Tanigawa-Lau
 Maintainer: Cole Tanigawa-Lau <coletl@stanford.edu>
 Description: This package holds my convenience functions and 
@@ -9,7 +9,11 @@ Description: This package holds my convenience functions and
     without dependencies.
 Depends: 
     R (>= 3.0)
-Imports:
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Imports: 
     data.table,
     dplyr,
     stringdist,
@@ -23,12 +27,11 @@ Imports:
     skimr,
     janitor,
     broom,
-    magrittr
-Suggests:
+    magrittr,
+    pryr,
+    stats,
+    fastmatch,
+    matrixStats
+Suggests: 
     rmarkdown,
-    ggplot2,
     devtools
-License: What license is it under?
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 6.1.1

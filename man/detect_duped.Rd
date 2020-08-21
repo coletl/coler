@@ -4,8 +4,13 @@
 \alias{detect_duped}
 \title{Test for duplicates}
 \usage{
-detect_duped(..., sep = "-^-", incomparables = FALSE, named = FALSE,
-  message = FALSE)
+detect_duped(
+  ...,
+  sep = "-^-",
+  incomparables = FALSE,
+  named = FALSE,
+  message = FALSE
+)
 }
 \arguments{
 \item{...}{vectors to concatenate.}
