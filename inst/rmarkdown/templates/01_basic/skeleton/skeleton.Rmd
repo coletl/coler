@@ -16,7 +16,7 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.width = 7, fig.height = 5)
-proj_dir <- tryCatch(rprojroot::find_root(".Rproj"),
+proj_dir <- tryCatch(rprojroot::find_rstudio_root_file(),
                      error = function(e) rprojroot::find_root(".gitignore"))
 
 knitr::opts_knit$set(root.dir = proj_dir)
