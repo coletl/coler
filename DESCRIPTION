@@ -4,9 +4,7 @@ Title: Convenience functions and personal templates
 Version: 0.2.0
 Author: Cole Tanigawa-Lau
 Maintainer: Cole Tanigawa-Lau <coletl@stanford.edu>
-Description: This package holds my convenience functions and 
-    imports select functions from much larger packages. You may wish to install
-    without dependencies.
+Description: A package of my convenience functions
 Depends: 
     R (>= 3.0)
 License: What license is it under?
@@ -21,14 +19,6 @@ Imports:
     stringr,
     purrr,
     ggplot2,
-    fst,
-    qs,
-    waldo,
-    skimr,
-    janitor,
-    broom,
-    magrittr,
-    pryr,
     stats,
     fastmatch,
     matrixStats

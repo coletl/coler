@@ -2,6 +2,7 @@
 
 This package contains personal R functions and RMarkdown templates.
 It also imports select functions from packages that are inconvenient to load entirely.
+There are unnecessary dependencies because I use this branch to install other packages I use frequently.
 
 ## Install
 
