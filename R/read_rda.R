@@ -19,8 +19,8 @@ read_rda <- function(file){
 
     # If file had multiple objects, build a list to return
     out <-
-        if(length(new_objnms) == 1) get(new_objnms, envir = tenv)
-    else mget(new_objnm, envir = tenv)
+        if(length(new_objnms) == 1) get(new_objnms, envir = env)
+    else mget(new_objnm, envir = env)
 
     return(out)
 }
