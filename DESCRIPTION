@@ -1,7 +1,7 @@
 Package: coler
 Type: Package
 Title: Convenience functions and personal templates 
-Version: 0.2.0
+Version: 0.3.0
 Author: Cole Tanigawa-Lau
 Maintainer: Cole Tanigawa-Lau <coletl@stanford.edu>
 Description: A package of my convenience functions
@@ -21,7 +21,8 @@ Imports:
     ggplot2,
     stats,
     fastmatch,
-    matrixStats
+    matrixStats,
+    broom, janitor, magrittr, pryr, skimr, waldo
 Suggests: 
     rmarkdown,
     devtools
