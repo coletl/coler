@@ -20,7 +20,6 @@ Imports:
     purrr,
     ggplot2,
     stats,
-    fastmatch,
     matrixStats,
     broom, janitor, magrittr, pryr, skimr, waldo
 Suggests: 

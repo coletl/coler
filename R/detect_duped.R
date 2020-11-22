@@ -1,5 +1,6 @@
 #' @name detect_duped
 #' @title Test for duplicates
+#' @aliases duped
 #'
 #' @description Test for duplicates in one or a combination of vectors.
 #'
@@ -36,14 +37,14 @@ detect_duped <-
   function(..., sep = "-^-", incomparables = FALSE,
            named = FALSE, message = FALSE) {
 
+    import::here(data.table, "%chin%")
+
     if(length(list(...)) > 1) combs <- paste(..., sep = sep)
     else combs <- as.vector(...)
 
     dups <- unique(combs[duplicated(combs, incomparables = incomparables)])
 
-    if(requireNamespace("fastmatch", quietly = TRUE))
-         out <- fastmatch::`%fin%`(combs, dups)
-    else out <- (combs %in% dups)
+    out <- (combs %chin% dups)
 
 
     if(message) message(
@@ -56,3 +57,8 @@ detect_duped <-
 
     return(out)
   }
+
+# Alias for easier access
+#' @rdname detect_duped
+#' @export
+duped <- detect_duped

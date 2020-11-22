@@ -25,6 +25,8 @@ save_list(
 
 \item{cores}{number of cores to use in \code{\link{mcparallel}}. The default (1) runs in series. Note that several file-writing functions already implement multi-threading.}
 
+\item{compress}{compression rate for \code{\link[fst]{write_fst}}.}
+
 \item{...}{further arguments to pass to the file-writing function:
 \code{\link{saveRDS}},
 \code{\link[fst]{write_fst}}, \code{\link[qs]{qsave}},
