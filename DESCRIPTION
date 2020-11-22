@@ -21,7 +21,6 @@ Imports:
     ggplot2,
     stats,
     matrixStats,
-    import,
     fst, qs
 Suggests: 
     rmarkdown,
