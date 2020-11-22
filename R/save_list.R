@@ -7,6 +7,7 @@
 #' @param ext a single extension for all files.
 #' @param names a vector of file names without extensions. Defaults to the names of \code{x}.
 #' @param cores number of cores to use in \code{\link{mcparallel}}. The default (1) runs in series. Note that several file-writing functions already implement multi-threading.
+#' @param compress compression rate for \code{\link[fst]{write_fst}}.
 #' @param ... further arguments to pass to the file-writing function:
 #'            \code{\link{saveRDS}},
 #'            \code{\link[fst]{write_fst}}, \code{\link[qs]{qsave}},

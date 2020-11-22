@@ -20,8 +20,9 @@ Imports:
     purrr,
     ggplot2,
     stats,
-    fastmatch,
-    matrixStats
+    matrixStats,
+    import,
+    fst, qs
 Suggests: 
     rmarkdown,
     devtools

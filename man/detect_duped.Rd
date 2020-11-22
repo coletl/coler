@@ -2,6 +2,7 @@
 % Please edit documentation in R/detect_duped.R
 \name{detect_duped}
 \alias{detect_duped}
+\alias{duped}
 \title{Test for duplicates}
 \usage{
 detect_duped(
@@ -11,6 +12,8 @@ detect_duped(
   named = FALSE,
   message = FALSE
 )
+
+duped(..., sep = "-^-", incomparables = FALSE, named = FALSE, message = FALSE)
 }
 \arguments{
 \item{...}{vectors to concatenate.}
