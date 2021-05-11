@@ -2,7 +2,7 @@
 % Please edit documentation in R/mcheck.R
 \name{mcheck}
 \alias{mcheck}
-\alias{duped}
+\alias{merge_check}
 \title{Check match rates}
 \usage{
 mcheck(x, y, incomparables = FALSE)

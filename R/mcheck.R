@@ -1,6 +1,6 @@
 #' @name mcheck
 #' @title Check match rates
-#' @aliases duped
+#' @aliases merge_check
 #'
 #' @description Check match rates between two character vectors
 #'
@@ -11,7 +11,7 @@
 #'
 #' @return A numeric matrix of match statistics.
 #'
-#' @seealso \code{\link[data.table]{`%chin%`}} and \code{\link[base]{interaction}}.
+#' @seealso \code{\link[data.table]{`data.table::`%chin%``}} and \code{\link[base]{interaction}}.
 #'
 #' @examples
 #' A <- sample(state.abb, 50, replace = TRUE)
@@ -25,18 +25,17 @@
 
 mcheck <- function(x, y, incomparables = FALSE){
 
-    import::here(data.table, "%chin%")
-
     xdupes <- x[duplicated(x)]
     ydupes <- y[duplicated(y)]
 
 
-    x_in_y    <- mean(x %chin% y, na.rm = TRUE)
-    y_in_x    <- mean(y %chin% x, na.rm = TRUE)
+    x_in_y    <- mean(data.table::`%chin%`(x, y), na.rm = TRUE)
+    y_in_x    <- mean(data.table::`%chin%`(y, x), na.rm = TRUE)
 
     in_other  <- c(x = x_in_y,                y = y_in_x)
     missing   <- c(x = mean(is.na(x)),        y = mean(is.na(y)))
-    duplicate <- c(x = mean(x %chin% xdupes), y = mean(y %chin% ydupes))
+    duplicate <- c(x = mean(data.table::`%chin%`(x, xdupes)),
+                   y = mean(data.table::`%chin%`(y, ydupes)))
 
     unique    <- c(x = length(unique(x, incomparables = incomparables)),
                    y = length(unique(y, incomparables = incomparables)))
